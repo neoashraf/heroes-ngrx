@@ -1,0 +1,27 @@
+<div
+  class="card mt-3"
+  style="width: auto;"
+  *ngFor="let item of (list$ | async)"
+>
+  <div class="card-header">
+    <h3 class="card-title">{{ item.firstName }} {{ item.lastName }}</h3>
+    <h5 class="card-subtitle mb-2 text-muted">{{ item.house }}</h5>
+    <p class="card-text">{{ item.knownAs }}</p>
+  </div>
+  <section class="card-body">
+    <div class="row">
+      <button
+        (click)="removeItem(item)"
+        class="btn btn-outline-danger card-link col text-center"
+      >
+        <span class="fas fa-eraser"></span> Delete
+      </button>
+      <button
+        (click)="goToEditItem(item.id)"
+        class="btn btn-outline-primary card-link col text-center"
+      >
+        <span class="fas fa-edit"></span> Edit
+      </button>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,57 @@
+<section class="d-flex flex-row justify-content-start">
+  <button
+    type="button"
+    class="btn btn-outline-success mx-1"
+    (click)="showNewItemForm()"
+  >
+    <span class="fas fa-plus my-lg-0"></span> Add New
+  </button>
+  <button
+    *ngIf="isShowNewItemForm"
+    type="button"
+    class="btn btn-outline-warning mx-1"
+    (click)="cancelForm()"
+  >
+    <span class="fas fa-chevron-left my-lg-0"></span> Cancel
+  </button>
+</section>
+<div class="card my-3" style="width: auto;" @fade *ngIf="isShowNewItemForm">
+  <form class="card-header" [formGroup]="newItemForm" (ngSubmit)="onSubmit()">
+    <section class="d-flex flex-row">
+      <div class="mt-3 mr-3 input-width">
+        <label for="firstName">First Name</label>
+        <input
+          required="required"
+          type="text"
+          id="firstName"
+          class="form-control"
+          formControlName="firstName"
+        />
+      </div>
+      <div class="mt-3 ml-3 input-width">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          formControlName="lastName"
+        />
+      </div>
+    </section>
+    <label for="house" class="mt-3">House</label>
+    <input
+      type="text"
+      id="house"
+      class="form-control"
+      formControlName="house"
+    />
+    <label for="knownAs" class="mt-3">Known as</label>
+    <input
+      type="text"
+      id="knownAs"
+      class="form-control"
+      formControlName="knownAs"
+    />
+    <button type="submit" class="btn btn-success mt-3">Save</button>
+  </form>
+</div>

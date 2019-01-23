@@ -1,0 +1,54 @@
+<div>
+  <h2>Edit Hero</h2>
+  <div class="card my-3" style="width: auto;">
+    <form class="card-header" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+      <section class="d-flex flex-row">
+        <div class="mt-3 mr-3 input-width">
+          <label for="firstName">First Name</label>
+          <input
+            [(ngModel)]="hero.firstName"
+            type="text"
+            id="firstName"
+            class="form-control"
+            formControlName="firstName"
+          />
+        </div>
+        <div class="mt-3 ml-3 input-width">
+          <label for="lastName">Last Name</label>
+          <input
+            [(ngModel)]="hero.lastName"
+            type="text"
+            id="lastName"
+            class="form-control"
+            formControlName="lastName"
+          />
+        </div>
+      </section>
+      <label for="house" class="mt-3">House</label>
+      <input
+        [(ngModel)]="hero.house"
+        type="text"
+        id="house"
+        class="form-control"
+        formControlName="house"
+      />
+      <label for="knownAs" class="mt-3">Known as</label>
+      <input
+        [(ngModel)]="hero.knownAs"
+        type="text"
+        id="knownAs"
+        class="form-control"
+        formControlName="knownAs"
+      />
+      <button [disabled]="isSuccess" type="submit" class="btn btn-info mt-3">
+        Update
+      </button>
+      <button (click)="back()" type="button" class="btn btn-default mt-3">
+        Back
+      </button>
+    </form>
+  </div>
+  <div *ngIf="isSuccess" class="alert alert-success col-md-3" role="alert">
+    This hero has been updated!
+  </div>
+</div>

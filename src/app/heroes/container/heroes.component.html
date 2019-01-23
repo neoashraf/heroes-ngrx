@@ -1,0 +1,16 @@
+<div class="container">
+  <app-new-item-form
+    [isShowNewItemForm]="isShowNewItemForm"
+    [newItemForm]="newItemForm"
+    (handleSubmit)="onSubmit()"
+    (handleCancelForm)="cancelForm()"
+    (handleShowNewItemForm)="showNewItemForm()"
+  ></app-new-item-form>
+
+  <app-item-list
+    [editItemUrl]="editItemUrl"
+    [list$]="list$"
+    [list]="list"
+    (handleRemoveItem)="removeItem($event)"
+  ></app-item-list>
+</div>
