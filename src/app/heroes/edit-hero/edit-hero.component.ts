@@ -54,7 +54,7 @@ export class EditHeroComponent implements OnInit, OnDestroy {
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
     this.sub = this.heroService
       .getHero(this.id)
-      .subscribe(data => (this.hero = data));
+      .subscribe(data => this.heroForm.patchValue(data));
   }
 
   private putHero() {

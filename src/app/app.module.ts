@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { RouterState, StoreRouterConnectingModule } from "@ngrx/router-store";
 import { AppComponent } from "./app.component";
 import { StoreModule } from "@ngrx/store";
 import { reducers, metaReducers } from "./reducers";
@@ -21,9 +22,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-
+    StoreRouterConnectingModule.forRoot({
+      routerState: RouterState.Minimal
+    }),
     EffectsModule.forRoot([HeroEffects, VillainEffects]),
-
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [HeroService, VillainService],

@@ -54,7 +54,7 @@ export class EditVillainComponent implements OnInit, OnDestroy {
     this.id = this.activatedRoute.snapshot.paramMap.get("id");
     this.sub = this.villainService
       .getVillain(this.id)
-      .subscribe(data => (this.villain = data));
+      .subscribe(data => this.villainForm.patchValue(data));
   }
 
   private putVillain(): void {
