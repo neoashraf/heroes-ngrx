@@ -1,93 +1,63 @@
-import { Action } from "@ngrx/store";
+/*
+ * NgRx version 8
+ * Go to heroes to see NgRx version 7
+ */
+import { createAction, props } from "@ngrx/store";
 import { Villain } from "../models/villain.model";
 
-export enum VillainActionTypes {
-  LoadVillains = "[Villain] Load Villains",
-  LoadVillainsSuccess = "[Villain] Load Villains Success",
-  LoadVillainsFail = "[Villain] Load Villains Fail",
+export const loadVillains = createAction("[Villain] loadVillains");
 
-  CreateVillain = "[Villain] Create Villain",
-  CreateVillainSuccess = "[Villain] Create Villain Success",
-  CreateVillainFail = "[Villain] Create Villain Fail",
+export const loadVillainsSuccess = createAction(
+  "[Villain] loadVillainsSuccess",
+  props<{ villains: Villain[] }>()
+);
 
-  UpdateVillain = "[Villain] Update Villain",
-  UpdateVillainSuccess = "[Villain] Update Villain Success",
-  UpdateVillainFail = "[Villain] Update Villain Fail",
+export const loadVillainsFail = createAction(
+  "[Villain] loadVillainsFail",
+  props<{ villains: []; error: any }>()
+);
 
-  DeleteVillain = "[Villain] Delete Villain",
-  DeleteVillainSuccess = "[Villain] Delete Villain Success",
-  DeleteVillainFail = "[Villain] Delete Villain Fail"
-}
+export const createVillain = createAction(
+  "[Villain] createVillain",
+  props<{ villain: Villain }>()
+);
 
-export class LoadVillains implements Action {
-  readonly type = VillainActionTypes.LoadVillains;
-}
+export const createVillainSuccess = createAction(
+  "[Villain] createVillainSuccess",
+  props<{ villain: Villain }>()
+);
 
-export class LoadVillainsSuccess implements Action {
-  readonly type = VillainActionTypes.LoadVillainsSuccess;
-  constructor(public payload: Villain[]) {}
-}
+export const createVillainFail = createAction(
+  "[Villain] createVillainFail",
+  props<{ error: any }>()
+);
 
-export class LoadVillainsFail implements Action {
-  readonly type = VillainActionTypes.LoadVillainsFail;
-  constructor(public payload: any) {}
-}
+export const updateVillain = createAction(
+  "[Villain] updateVillain",
+  props<{ villain: any }>()
+);
 
-export class CreateVillain implements Action {
-  readonly type = VillainActionTypes.CreateVillain;
-  constructor(public payload: Villain) {}
-}
+export const updateVillainSuccess = createAction(
+  "[Villain] updateVillainSuccess",
+  props<{ villain: Villain }>()
+);
 
-export class CreateVillainSuccess implements Action {
-  readonly type = VillainActionTypes.CreateVillainSuccess;
-  constructor(public payload: Villain) {}
-}
+export const updateVillainFail = createAction(
+  "[Villain] updateVillainFail",
+  props<{ error: any }>()
+);
 
-export class CreateVillainFail implements Action {
-  readonly type = VillainActionTypes.CreateVillainFail;
-  constructor(public payload: any) {}
-}
+export const deleteVillain = createAction(
+  "[Villain] deleteVillain",
+  props<{ villain: Villain }>()
+);
 
-export class UpdateVillain implements Action {
-  readonly type = VillainActionTypes.UpdateVillain;
-  constructor(public payload: Villain) {}
-}
+export const deleteVillainSuccess = createAction(
+  "[Villain] deleteVillainSuccess",
+  props<{ villainId: string }>()
+);
 
-export class UpdateVillainSuccess implements Action {
-  readonly type = VillainActionTypes.UpdateVillainSuccess;
-  constructor(public payload: Villain) {}
-}
-
-export class UpdateVillainFail implements Action {
-  readonly type = VillainActionTypes.UpdateVillainFail;
-  constructor(public payload: any) {}
-}
-
-export class DeleteVillain implements Action {
-  readonly type = VillainActionTypes.DeleteVillain;
-  constructor(public payload: Villain) {}
-}
-
-export class DeleteVillainSuccess implements Action {
-  readonly type = VillainActionTypes.DeleteVillainSuccess;
-  constructor(public payload: string) {}
-}
-
-export class DeleteVillainFail implements Action {
-  readonly type = VillainActionTypes.DeleteVillainFail;
-  constructor(public payload: any) {}
-}
-
-export type VillainActions =
-  | LoadVillains
-  | LoadVillainsSuccess
-  | LoadVillainsFail
-  | CreateVillain
-  | CreateVillainSuccess
-  | CreateVillainFail
-  | UpdateVillain
-  | UpdateVillainSuccess
-  | UpdateVillainFail
-  | DeleteVillain
-  | DeleteVillainSuccess
-  | DeleteVillainFail;
+export const deleteVillainFail = createAction(
+  "[Villain] deleteVillainFail",
+  props<{ error: any }>()
+);

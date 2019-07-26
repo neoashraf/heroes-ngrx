@@ -1,5 +1,10 @@
+/*
+ * NgRx version 8
+ * Go to heroes to see NgRx version 7
+ */
+import { createReducer, on } from "@ngrx/store";
 import { Villain } from "../models/villain.model";
-import { VillainActions, VillainActionTypes } from "../actions/villain.actions";
+import * as VillainActions from "../actions/villain.actions";
 
 export interface VillainState {
   villains: Villain[];
@@ -15,72 +20,62 @@ export const initialState: VillainState = {
   error: ""
 };
 
-export function villainReducer(
-  state = initialState,
-  action: VillainActions
-): VillainState {
-  switch (action.type) {
-    case VillainActionTypes.LoadVillains:
-      return { ...state, requesting: true };
-    case VillainActionTypes.LoadVillainsSuccess:
-      return { ...state, villains: action.payload, requesting: false };
-    case VillainActionTypes.LoadVillainsFail:
-      return {
-        ...state,
-        villains: [],
-        error: action.payload,
-        requesting: false
-      };
-    case VillainActionTypes.CreateVillain:
-      return { ...state, requesting: true };
-    case VillainActionTypes.CreateVillainSuccess:
-      return {
-        ...state,
-        villains: [...state.villains, action.payload],
-        requesting: false
-      };
-    case VillainActionTypes.CreateVillainFail:
-      return {
-        ...state,
-        error: action.payload,
-        requesting: false
-      };
-    case VillainActionTypes.UpdateVillain:
-      return { ...state, requesting: true };
-    // Not applicable on this app because this is a separate page
-    case VillainActionTypes.UpdateVillainSuccess:
-      return {
-        ...state,
-        villains: state.villains.map(villain =>
-          villain.id === action.payload.id ? action.payload : villain
-        ),
-        requesting: false
-      };
-    // Not applicable on this app because this is a separate page
-    case VillainActionTypes.UpdateVillainFail:
-      return {
-        ...state,
-        error: action.payload,
-        requesting: false
-      };
-    case VillainActionTypes.DeleteVillain:
-      return { ...state, requesting: true };
-    case VillainActionTypes.DeleteVillainSuccess:
-      return {
-        ...state,
-        villains: state.villains.filter(
-          villain => villain.id !== action.payload
-        ),
-        requesting: false
-      };
-    case VillainActionTypes.DeleteVillainFail:
-      return {
-        ...state,
-        villains: [],
-        error: action.payload,
-        requesting: false
-      };
-    default:
-      return state;
-  }
-}
+export const villainReducer = createReducer(
+  initialState,
+  on(VillainActions.loadVillains, state => ({
+    ...state,
+    requesting: true
+  })),
+  on(VillainActions.loadVillainsSuccess, (state, { villains }) => {
+    console.log("VILLAINS_REDUCER: ", villains);
+    return {
+      ...state,
+      villains
+    };
+  }),
+  on(VillainActions.loadVillainsFail, (state, { error }) => ({
+    ...state,
+    villains: [],
+    error
+  })),
+  on(VillainActions.createVillain, state => ({
+    ...state,
+    requesting: true
+  })),
+  on(VillainActions.createVillainSuccess, state => ({
+    ...state,
+    villains: [...state.villains, state.villain]
+  })),
+  on(VillainActions.createVillainFail, (state, { error }) => ({
+    ...state,
+    error,
+    requesting: false
+  })),
+  on(VillainActions.updateVillain, state => ({
+    ...state,
+    requesting: true
+  })),
+  on(VillainActions.updateVillainSuccess, (state: any) => ({
+    ...state,
+    villains: state.villains.map(v => (v.id === state.id ? state : v))
+  })),
+  on(VillainActions.updateVillainFail, (state, { error }) => ({
+    ...state,
+    error,
+    requesting: false
+  })),
+  on(VillainActions.deleteVillain, state => ({
+    ...state,
+    requesting: true
+  })),
+  on(VillainActions.deleteVillainSuccess, (state, { villainId }) => ({
+    ...state,
+    villains: state.villains.filter(v => v.id !== villainId),
+    requesting: false
+  })),
+  on(VillainActions.deleteVillainFail, (state, { error }) => ({
+    ...state,
+    error,
+    requesting: false
+  }))
+);

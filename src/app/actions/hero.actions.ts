@@ -1,3 +1,7 @@
+/*
+ * NgRx version 7
+ * Go to villains to see NgRx version 8
+ */
 import { Action } from "@ngrx/store";
 import { Hero } from "../models/hero.model";
 

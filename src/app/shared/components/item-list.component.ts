@@ -7,15 +7,13 @@ import { Router } from "@angular/router";
 })
 export class ItemListComponent {
   constructor(private router: Router) {}
-  @Input() editItemUrl: string;
-  @Input() list$: any;
-  @Input() list: any[];
+  @Input() editItemUrl?: string;
+  @Input() list$?: any;
+  @Input() list?: any[];
 
   @Output() handleRemoveItem: EventEmitter<any> = new EventEmitter<any>();
 
   removeItem(item: any): void {
-    console.log();
-
     this.handleRemoveItem.emit(item);
   }
 

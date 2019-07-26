@@ -1,9 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
+import { throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
+import {
+  createVillain,
+  deleteVillain,
+  loadVillains
+} from "../../actions/villain.actions";
 import { selectVillain, State } from "../../reducers";
 
 import { Villain } from "../../models/villain.model";
-import * as villainActions from "../../actions/villain.actions";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
@@ -13,8 +19,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class VillainsComponent implements OnInit {
   editItemUrl: string = "/villains/edit-villain/";
-  list$: any;
-  list: any[];
+  list$?: any;
+  list?: Villain[];
   newItemForm: FormGroup;
   isShowNewItemForm: boolean = false;
 
@@ -22,14 +28,15 @@ export class VillainsComponent implements OnInit {
 
   ngOnInit() {
     this.formBuilderInit();
-    this.store.dispatch(new villainActions.LoadVillains());
-    this.list$ = this.store.select(selectVillain);
+    this.store.dispatch(loadVillains());
+    this.store
+      .select(selectVillain)
+      .pipe(catchError(err => throwError(err)))
+      .subscribe(data => (this.list = data));
   }
 
   onSubmit() {
-    this.store.dispatch(
-      new villainActions.CreateVillain(this.newItemForm.value)
-    );
+    this.store.dispatch(createVillain(this.newItemForm.value));
     this.newItemForm.reset();
     this.isShowNewItemForm = !this.isShowNewItemForm;
   }
@@ -43,7 +50,7 @@ export class VillainsComponent implements OnInit {
     const isConfirmed = confirm(`Delete ${villain.firstName}`);
     if (!isConfirmed) return;
 
-    this.store.dispatch(new villainActions.DeleteVillain(villain));
+    this.store.dispatch(deleteVillain({ villain }));
   }
 
   private formBuilderInit(): void {

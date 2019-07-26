@@ -1,11 +1,11 @@
-import { reducer, initialState } from "./villain.reducer";
+import { initialState, villainReducer } from "./villain.reducer";
 
 describe("Villain Reducer", () => {
   describe("an unknown action", () => {
     it("should return the previous state", () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = villainReducer(initialState, action);
 
       expect(result).toBe(initialState);
     });

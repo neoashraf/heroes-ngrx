@@ -26,5 +26,8 @@ export const selectHero = createSelector(
 export const selectVillainsState = (state: State) => state.villains;
 export const selectVillain = createSelector(
   selectVillainsState,
-  (state: VillainState) => state.villains
+  (state: VillainState) => {
+    console.log("INDEX: ", state.villains);
+    return state.villains;
+  }
 );

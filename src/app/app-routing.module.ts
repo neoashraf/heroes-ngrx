@@ -11,11 +11,14 @@ import { RouterModule } from "@angular/router";
       },
       {
         path: "heroes",
+        // Angular 7
         loadChildren: "./heroes/heroes.module#HeroesModule"
       },
       {
         path: "villains",
-        loadChildren: "./villains/villains.module#VillainsModule"
+        loadChildren: () =>
+          // Angular 8
+          import("./villains/villains.module").then(m => m.VillainsModule)
       },
       { path: "**", redirectTo: "" }
     ])

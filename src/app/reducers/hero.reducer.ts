@@ -1,5 +1,8 @@
+/*
+ * NgRx version 7
+ * Go to villains to see NgRx version 8
+ */
 import { HeroActions, HeroActionTypes } from "../actions/hero.actions";
-
 import { Hero } from "../models/hero.model";
 
 export interface HeroState {

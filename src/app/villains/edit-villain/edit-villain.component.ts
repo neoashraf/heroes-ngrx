@@ -3,9 +3,9 @@ import { Location } from "@angular/common";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { Store } from "@ngrx/store";
+import { updateVillain } from "../../actions/villain.actions";
 import { State } from "../../reducers";
 import { Subscription } from "rxjs";
-import * as villainActions from "../../actions/villain.actions";
 import { VillainService } from "../villain.service";
 import { Villain } from "../../models/villain.model";
 
@@ -58,9 +58,7 @@ export class EditVillainComponent implements OnInit, OnDestroy {
   }
 
   private putVillain(): void {
-    this.store.dispatch(
-      new villainActions.UpdateVillain(this.villainForm.value)
-    );
+    this.store.dispatch(updateVillain(this.villainForm.value));
   }
 
   private formBuilderInit(): void {
