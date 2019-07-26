@@ -26,13 +26,10 @@ export const villainReducer = createReducer(
     ...state,
     requesting: true
   })),
-  on(VillainActions.loadVillainsSuccess, (state, { villains }) => {
-    console.log("VILLAINS_REDUCER: ", villains);
-    return {
-      ...state,
-      villains
-    };
-  }),
+  on(VillainActions.loadVillainsSuccess, (state, { villains }) => ({
+    ...state,
+    villains
+  })),
   on(VillainActions.loadVillainsFail, (state, { error }) => ({
     ...state,
     villains: [],

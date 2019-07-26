@@ -34,7 +34,7 @@ export const createVillainFail = createAction(
 
 export const updateVillain = createAction(
   "[Villain] updateVillain",
-  props<{ villain: any }>()
+  props<{ villain: Villain }>()
 );
 
 export const updateVillainSuccess = createAction(

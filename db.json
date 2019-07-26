@@ -612,33 +612,19 @@
   ],
   "villains": [
     {
-      "id": "A7F2D9FC-86D6-1D87-CB73-C7C3C8EC908F",
-      "firstName": "Henry",
-      "lastName": "Harrison",
-      "house": "Nigerir",
-      "knownAs": "Mollis Vitae Industries Co.",
-      "type": "[Villain] updateVillain"
-    },
-    {
-      "id": "AFBD6796-83BD-2724-C0FA-7F8D0F0766C1",
-      "firstName": "Hammett",
-      "lastName": "Mills",
-      "house": "Bonaire, Sint Eustatius and Saba",
-      "knownAs": "Odio Nam Associates"
-    },
-    {
       "id": "6AECB1FF-4581-1A41-4CC6-FA7B4B13AEF0",
       "firstName": "Kamal",
       "lastName": "Kennedy",
       "house": "Northern Mariana Islands",
-      "knownAs": "Luctus Vulputate Nisi Corp."
+      "knownAs": "asd"
     },
     {
       "id": "2DCD45A5-C0E6-C93C-4CEC-D3788EE5E0BA",
       "firstName": "Ali",
       "lastName": "Chase",
       "house": "Bahrain",
-      "knownAs": "Nonummy Associates"
+      "knownAs": "Nonummy",
+      "type": "[Villain] updateVillain"
     },
     {
       "id": "D6B10776-C048-4F70-8836-369E96334C12",

@@ -29,7 +29,7 @@ export class VillainService {
       })
     );
   }
-  updateVillain(villain: any): Observable<any> {
+  updateVillain(villain: Villain): Observable<any> {
     return this.http
       .put<Villain>(`${BaseUrl.villain}${villain.id}`, villain)
       .pipe(

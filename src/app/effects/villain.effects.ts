@@ -19,12 +19,11 @@ export class VillainEffects {
       tap(val => console.log("BEFORE MAP:", val)),
       mergeMap(() =>
         this.villainService.getVillains().pipe(
-          map(villains => {
-            console.log("VILLAINS in Effects: ", villains);
-            return villainActions.loadVillainsSuccess({
+          map(villains =>
+            villainActions.loadVillainsSuccess({
               villains
-            });
-          }),
+            })
+          ),
           catchError(err => of(villainActions.loadVillainsFail(err)))
         )
       ),
@@ -45,20 +44,18 @@ export class VillainEffects {
     )
   );
 
+  // @ts-ignore
   updateVillain$ = createEffect(() =>
     this.actions$.pipe(
       ofType(villainActions.updateVillain),
-      map((villain: any) => {
-        return villain;
-      }),
-      mergeMap((villain: any) => {
-        return this.villainService.updateVillain(villain).pipe(
-          map((villain: any) => {
-            return villainActions.updateVillainSuccess(villain);
-          }),
+      // I'm using any keyword here instead of Villain because the object has an extra type property.
+      map(({ type, ...villain }: any) => villain),
+      mergeMap((villain: Villain) =>
+        this.villainService.updateVillain(villain).pipe(
+          map((villain: any) => villainActions.updateVillainSuccess(villain)),
           catchError(err => of(villainActions.updateVillainFail(err)))
-        );
-      })
+        )
+      )
     )
   );
 
