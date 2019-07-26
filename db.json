@@ -612,33 +612,11 @@
   ],
   "villains": [
     {
-      "id": "6AECB1FF-4581-1A41-4CC6-FA7B4B13AEF0",
-      "firstName": "Kamal",
-      "lastName": "Kennedy",
-      "house": "Northern Mariana Islands",
-      "knownAs": "asd"
-    },
-    {
-      "id": "2DCD45A5-C0E6-C93C-4CEC-D3788EE5E0BA",
-      "firstName": "Ali",
-      "lastName": "Chase",
-      "house": "Bahrain",
-      "knownAs": "Nonummy",
-      "type": "[Villain] updateVillain"
-    },
-    {
       "id": "D6B10776-C048-4F70-8836-369E96334C12",
       "firstName": "Amity",
       "lastName": "Moreno",
       "house": "Swaziland",
       "knownAs": "Justo LLC"
-    },
-    {
-      "id": "839FFA6F-9768-9287-5D92-DBBBA456EC60",
-      "firstName": "Odette",
-      "lastName": "Carroll",
-      "house": "Kiribati",
-      "knownAs": "Vitae Odio Sagittis Inc."
     },
     {
       "id": "A3D523C0-F181-B49D-7F88-E8D72DD2EEC0",

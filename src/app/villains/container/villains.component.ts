@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { throwError } from "rxjs";
+import { Subscription, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import {
   createVillain,
@@ -8,7 +8,6 @@ import {
   loadVillains
 } from "../../actions/villain.actions";
 import { selectVillain, State } from "../../reducers";
-
 import { Villain } from "../../models/villain.model";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
@@ -17,22 +16,27 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   templateUrl: "./villains.component.html",
   styleUrls: ["./villains.component.css"]
 })
-export class VillainsComponent implements OnInit {
+export class VillainsComponent implements OnInit, OnDestroy {
   editItemUrl: string = "/villains/edit-villain/";
   list$?: any;
   list?: Villain[];
   newItemForm: FormGroup;
   isShowNewItemForm: boolean = false;
+  sub: Subscription;
 
   constructor(private store: Store<State>, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.formBuilderInit();
     this.store.dispatch(loadVillains());
-    this.store
+    this.sub = this.store
       .select(selectVillain)
       .pipe(catchError(err => throwError(err)))
       .subscribe(data => (this.list = data));
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
   onSubmit() {

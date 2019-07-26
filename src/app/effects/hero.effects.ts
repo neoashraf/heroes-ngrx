@@ -1,17 +1,14 @@
+/*
+ * NgRx version 7
+ * Go to villains to see NgRx version 8
+ */
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { HeroService } from "../heroes/hero.service";
 import { Observable, of } from "rxjs";
 import { Action } from "@ngrx/store";
 import * as heroActions from "../actions/hero.actions";
-import {
-  catchError,
-  exhaustMap,
-  map,
-  mapTo,
-  mergeMap,
-  tap
-} from "rxjs/operators";
+import { catchError, map, mergeMap, tap } from "rxjs/operators";
 import { Hero } from "../models/hero.model";
 
 @Injectable()

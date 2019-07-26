@@ -1,3 +1,7 @@
+/*
+ * NgRx version 8
+ * Go to heroes to see NgRx version 7
+ */
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
