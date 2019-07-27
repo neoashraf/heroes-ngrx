@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./heroes.component.css"]
 })
 export class HeroesComponent implements OnInit {
-  editItemUrl: string = "/heroes/edit-hero/";
+  editItemUrl: string = "/heroes/edit-hero/";  // shared with item-list-component.html
   list$: any;
   list: Hero[];
   newItemForm: FormGroup;

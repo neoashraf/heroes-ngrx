@@ -17,7 +17,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./villains.component.css"]
 })
 export class VillainsComponent implements OnInit, OnDestroy {
-  editItemUrl: string = "/villains/edit-villain/";
+  editItemUrl: string = "/villains/edit-villain/"; // shared with item-list-component.html
   list$?: any;
   list?: Villain[];
   newItemForm: FormGroup;
