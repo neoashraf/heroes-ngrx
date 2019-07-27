@@ -1,10 +1,9 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { EditVillainComponent } from "./edit-villain/edit-villain.component";
-import { VillainsComponent } from "./container/villains.component";
-import { VillainService } from "./villain.service";
 import { SharedModule } from "../shared/shared.module";
+import { VillainsComponent } from "./container/villains.component";
+import { EditVillainComponent } from "./edit-villain/edit-villain.component";
 
 @NgModule({
   declarations: [VillainsComponent, EditVillainComponent],
@@ -21,7 +20,6 @@ import { SharedModule } from "../shared/shared.module";
         component: EditVillainComponent
       }
     ])
-  ],
-  providers: [VillainService]
+  ]
 })
 export class VillainsModule {}
