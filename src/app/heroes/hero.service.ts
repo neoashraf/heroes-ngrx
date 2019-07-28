@@ -16,11 +16,7 @@ export class HeroService {
   getHero(id: string): Observable<Hero> {
     return this.http
       .get<Hero>(`${BaseUrl.hero}${id}`)
-      .pipe(
-        catchError((err: HttpErrorResponse) =>
-          throwError(err.message)
-        )
-      );
+      .pipe(catchError((err: HttpErrorResponse) => throwError(err.message)));
   }
   addHero(hero: Hero): Observable<any> {
     return this.http.post<Hero>(`${BaseUrl.hero}`, hero).pipe(

@@ -16,11 +16,7 @@ export class VillainService {
   getVillain(id: string): Observable<Villain> {
     return this.http
       .get<Villain>(`${BaseUrl.villain}${id}`)
-      .pipe(
-        catchError((err: HttpErrorResponse) =>
-          throwError(err.message)
-        )
-      );
+      .pipe(catchError((err: HttpErrorResponse) => throwError(err.message)));
   }
   addVillain(villain: Villain): Observable<any> {
     return this.http.post<Villain>(`${BaseUrl.villain}`, villain).pipe(
