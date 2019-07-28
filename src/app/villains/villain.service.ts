@@ -18,14 +18,14 @@ export class VillainService {
       .get<Villain>(`${BaseUrl.villain}${id}`)
       .pipe(
         catchError((err: HttpErrorResponse) =>
-          throwError(new Error(err.message))
+          throwError(err.message)
         )
       );
   }
   addVillain(villain: Villain): Observable<any> {
     return this.http.post<Villain>(`${BaseUrl.villain}`, villain).pipe(
       catchError((err: HttpErrorResponse) => {
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
@@ -34,14 +34,14 @@ export class VillainService {
       .put<Villain>(`${BaseUrl.villain}${villain.id}`, villain)
       .pipe(
         catchError((err: HttpErrorResponse) => {
-          return throwError(new Error(err.message));
+          return throwError(err.message);
         })
       );
   }
   removeVillain(id: string): Observable<any> {
     return this.http.delete<Villain>(`${BaseUrl.villain}${id}`).pipe(
       catchError((err: HttpErrorResponse) => {
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }

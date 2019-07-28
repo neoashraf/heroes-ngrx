@@ -18,28 +18,28 @@ export class HeroService {
       .get<Hero>(`${BaseUrl.hero}${id}`)
       .pipe(
         catchError((err: HttpErrorResponse) =>
-          throwError(new Error(err.message))
+          throwError(err.message)
         )
       );
   }
   addHero(hero: Hero): Observable<any> {
     return this.http.post<Hero>(`${BaseUrl.hero}`, hero).pipe(
       catchError((err: HttpErrorResponse) => {
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
   updateHero(hero: Hero): Observable<any> {
     return this.http.put<Hero>(`${BaseUrl.hero}${hero.id}`, hero).pipe(
       catchError((err: HttpErrorResponse) => {
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
   removeHero(id: string): Observable<any> {
     return this.http.delete<Hero>(`${BaseUrl.hero}${id}`).pipe(
       catchError((err: HttpErrorResponse) => {
-        return throwError(new Error(err.message));
+        return throwError(err.message);
       })
     );
   }
