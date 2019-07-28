@@ -1,7 +1,7 @@
-import { ActionReducerMap, createSelector, MetaReducer } from "@ngrx/store";
-import { environment } from "../../environments/environment";
-import { heroReducer, HeroState } from "./hero.reducer";
-import { villainReducer, VillainState } from "./villain.reducer";
+import { ActionReducerMap, createSelector, MetaReducer } from '@ngrx/store';
+import { environment } from '../../environments/environment';
+import { heroReducer, HeroState } from './hero.reducer';
+import { villainReducer, VillainState } from './villain.reducer';
 
 export interface State {
   heroes: HeroState;

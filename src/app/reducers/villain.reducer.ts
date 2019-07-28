@@ -2,9 +2,9 @@
  * NgRx version 8
  * Go to heroes to see NgRx version 7
  */
-import { createReducer, on } from "@ngrx/store";
-import { Villain } from "../models/villain.model";
-import * as VillainActions from "../actions/villain.actions";
+import { createReducer, on } from '@ngrx/store';
+import { Villain } from '../models/villain.model';
+import * as VillainActions from '../actions/villain.actions';
 
 export interface VillainState {
   villains: Villain[];
@@ -17,7 +17,7 @@ export const initialState: VillainState = {
   villains: [],
   villain: {} as Villain,
   requesting: false,
-  error: ""
+  error: ''
 };
 
 export const villainReducer = createReducer(

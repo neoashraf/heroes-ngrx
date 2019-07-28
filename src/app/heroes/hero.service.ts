@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
-import { Hero } from "../models/hero.model";
-import { BaseUrl } from "../shared/utils/constants";
-import { catchError } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { Hero } from '../models/hero.model';
+import { BaseUrl } from '../shared/utils/constants';
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class HeroService {

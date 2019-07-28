@@ -1,26 +1,26 @@
-import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
       {
-        path: "",
-        redirectTo: "heroes",
-        pathMatch: "full"
+        path: '',
+        redirectTo: 'heroes',
+        pathMatch: 'full'
       },
       {
-        path: "heroes",
+        path: 'heroes',
         // Angular 7
-        loadChildren: "./heroes/heroes.module#HeroesModule"
+        loadChildren: './heroes/heroes.module#HeroesModule'
       },
       {
-        path: "villains",
+        path: 'villains',
         loadChildren: () =>
           // Angular 8
-          import("./villains/villains.module").then(m => m.VillainsModule)
+          import('./villains/villains.module').then(m => m.VillainsModule)
       },
-      { path: "**", redirectTo: "" }
+      { path: '**', redirectTo: '' }
     ])
   ],
   exports: [RouterModule]

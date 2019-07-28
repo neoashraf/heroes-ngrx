@@ -2,25 +2,25 @@
  * NgRx version 7
  * Go to villains to see NgRx version 8
  */
-import { Action } from "@ngrx/store";
-import { Hero } from "../models/hero.model";
+import { Action } from '@ngrx/store';
+import { Hero } from '../models/hero.model';
 
 export enum HeroActionTypes {
-  LoadHeroes = "[Hero] Load Heroes",
-  LoadHeroesSuccess = "[Hero] Load Heroes Success",
-  LoadHeroesFail = "[Hero] Load Heroes Fail",
+  LoadHeroes = '[Hero] Load Heroes',
+  LoadHeroesSuccess = '[Hero] Load Heroes Success',
+  LoadHeroesFail = '[Hero] Load Heroes Fail',
 
-  CreateHero = "[Hero] Create Hero",
-  CreateHeroSuccess = "[Hero] Create Hero Success",
-  CreateHeroFail = "[Hero] Create Hero Fail",
+  CreateHero = '[Hero] Create Hero',
+  CreateHeroSuccess = '[Hero] Create Hero Success',
+  CreateHeroFail = '[Hero] Create Hero Fail',
 
-  UpdateHero = "[Hero] Update Hero",
-  UpdateHeroSuccess = "[Hero] Update Hero Success",
-  UpdateHeroFail = "[Hero] Update Hero Fail",
+  UpdateHero = '[Hero] Update Hero',
+  UpdateHeroSuccess = '[Hero] Update Hero Success',
+  UpdateHeroFail = '[Hero] Update Hero Fail',
 
-  DeleteHero = "[Hero] Delete Hero",
-  DeleteHeroSuccess = "[Hero] Delete Hero Success",
-  DeleteHeroFail = "[Hero] Delete Hero Fail"
+  DeleteHero = '[Hero] Delete Hero',
+  DeleteHeroSuccess = '[Hero] Delete Hero Success',
+  DeleteHeroFail = '[Hero] Delete Hero Fail'
 }
 
 export class LoadHeroes implements Action {

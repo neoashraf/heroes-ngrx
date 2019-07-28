@@ -2,13 +2,13 @@
  * NgRx version 8
  * Go to heroes to see NgRx version 7
  */
-import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { of } from "rxjs";
-import * as villainActions from "../actions/villain.actions";
-import { catchError, map, mergeMap, tap } from "rxjs/operators";
-import { VillainService } from "../villains/villain.service";
-import { Villain } from "../models/villain.model";
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
+import * as villainActions from '../actions/villain.actions';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
+import { VillainService } from '../villains/villain.service';
+import { Villain } from '../models/villain.model';
 
 @Injectable()
 export class VillainEffects {
@@ -20,7 +20,7 @@ export class VillainEffects {
   loadVillains$ = createEffect(() =>
     this.actions$.pipe(
       ofType(villainActions.loadVillains),
-      tap(val => console.log("BEFORE MAP:", val)),
+      tap(val => console.log('BEFORE MAP:', val)),
       mergeMap(() =>
         this.villainService.getVillains().pipe(
           map(villains =>
@@ -31,7 +31,7 @@ export class VillainEffects {
           catchError(err => of(villainActions.loadVillainsFail(err)))
         )
       ),
-      tap(val => console.log("AFTER MAP:", val))
+      tap(val => console.log('AFTER MAP:', val))
     )
   );
 

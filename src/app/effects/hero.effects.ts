@@ -2,14 +2,14 @@
  * NgRx version 7
  * Go to villains to see NgRx version 8
  */
-import { Injectable } from "@angular/core";
-import { Actions, Effect, ofType } from "@ngrx/effects";
-import { HeroService } from "../heroes/hero.service";
-import { Observable, of } from "rxjs";
-import { Action } from "@ngrx/store";
-import * as heroActions from "../actions/hero.actions";
-import { catchError, map, mergeMap, tap } from "rxjs/operators";
-import { Hero } from "../models/hero.model";
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { HeroService } from '../heroes/hero.service';
+import { Observable, of } from 'rxjs';
+import { Action } from '@ngrx/store';
+import * as heroActions from '../actions/hero.actions';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
+import { Hero } from '../models/hero.model';
 
 @Injectable()
 export class HeroEffects {
@@ -18,14 +18,14 @@ export class HeroEffects {
   @Effect()
   loadHeroes$: Observable<Action> = this.actions$.pipe(
     ofType(heroActions.HeroActionTypes.LoadHeroes),
-    tap(val => console.log("BEFORE MAP:", val)),
+    tap(val => console.log('BEFORE MAP:', val)),
     mergeMap(() =>
       this.heroService.getHeroes().pipe(
         map(heroes => new heroActions.LoadHeroesSuccess(heroes)),
         catchError(err => of(new heroActions.LoadHeroesFail(err)))
       )
     ),
-    tap(val => console.log("AFTER MAP:", val))
+    tap(val => console.log('AFTER MAP:', val))
   );
 
   @Effect()
